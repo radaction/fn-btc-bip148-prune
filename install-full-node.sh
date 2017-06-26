@@ -516,7 +516,6 @@ disablewallet=1
 rpcbind=127.0.0.1
 rpcport=8332
 rpcallowip=127.0.0.1
-uacomment=UASF-SegWit-BIP148
 prune=550
 
 
