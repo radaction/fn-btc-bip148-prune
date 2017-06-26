@@ -50,6 +50,7 @@ REPO_URL="https://github.com/UASF/bitcoin.git"
 
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
 VERSION=0.14.2-uasfsegwit0.3
+VERSION_URL=0.14.2-bip148_segwit0.3
 VERSION_DIR=0.14.2
 
 TARGET_DIR=$HOME/bitcoin-core
@@ -390,15 +391,15 @@ get_bin_url() {
             if program_exists "apk"; then
                 echo ""
             elif [ "$ARCH" = "armv7l" ]; then
-                url="$url/bitcoin-$VERSION-arm-linux-gnueabihf.tar.gz"
+                url="$url/bitcoin-$VERSION_URL-arm-linux-gnueabihf.tar.gz"
                 echo "$url"
             else
-                url="$url/bitcoin-$VERSION-$ARCH-linux-gnu.tar.gz"
+                url="$url/bitcoin-$VERSION_URL-$ARCH-linux-gnu.tar.gz"
                 echo "$url"
             fi
             ;;
         Darwin)
-            url="$url/bitcoin-$VERSION-osx64.tar.gz"
+            url="$url/bitcoin-$VERSION_URL-osx64.tar.gz"
             echo "$url"
             ;;
         FreeBSD)
