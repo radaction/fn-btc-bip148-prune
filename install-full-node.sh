@@ -46,10 +46,10 @@
 #
 ###############################################################################
 
-REPO_URL="https://github.com/bitcoin/bitcoin.git"
+REPO_URL="https://github.com/UASF/bitcoin.git"
 
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
-VERSION=0.14.2
+VERSION=v0.14.2-uasfsegwit0.3
 
 TARGET_DIR=$HOME/bitcoin-core
 PORT=8333
