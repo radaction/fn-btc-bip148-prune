@@ -46,10 +46,12 @@
 #
 ###############################################################################
 
-REPO_URL="https://github.com/bitcoin/bitcoin.git"
+REPO_URL="https://github.com/UASF/bitcoin.git"
 
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
-VERSION=0.14.2
+VERSION=0.14.2-uasfsegwit0.3
+VERSION_URL=0.14.2-bip148_segwit0.3
+VERSION_DIR=0.14.2
 
 TARGET_DIR=$HOME/bitcoin-core
 PORT=8333
@@ -383,21 +385,21 @@ build_bitcoin_core() {
 }
 
 get_bin_url() {
-    url="https://bitcoin.org/bin/bitcoin-core-$VERSION"
+    url="https://uasf.bitcoinreminder.com/core-$VERSION"
     case "$SYSTEM" in
         Linux)
             if program_exists "apk"; then
                 echo ""
             elif [ "$ARCH" = "armv7l" ]; then
-                url="$url/bitcoin-$VERSION-arm-linux-gnueabihf.tar.gz"
+                url="$url/bitcoin-$VERSION_URL-arm-linux-gnueabihf.tar.gz"
                 echo "$url"
             else
-                url="$url/bitcoin-$VERSION-$ARCH-linux-gnu.tar.gz"
+                url="$url/bitcoin-$VERSION_URL-$ARCH-linux-gnu.tar.gz"
                 echo "$url"
             fi
             ;;
         Darwin)
-            url="$url/bitcoin-$VERSION-osx64.tar.gz"
+            url="$url/bitcoin-$VERSION_URL-osx64.tar.gz"
             echo "$url"
             ;;
         FreeBSD)
@@ -410,8 +412,8 @@ get_bin_url() {
 }
 
 download_bin() {
-    checksum_url="https://bitcoin.org/bin/bitcoin-core-$VERSION/SHA256SUMS.asc"
-    signing_key_url="https://bitcoin.org/laanwj-releases.asc"
+    checksum_url="https://uasf.bitcoinreminder.com/core-$VERSION/SHA256SUMS.asc"
+    signing_key_url="https://raw.githubusercontent.com/UASF/bitcoin/master/contrib/gitian-keys/luke-jr-key.pgp"
 
     cd $TARGET_DIR
 
@@ -486,11 +488,11 @@ install_bitcoin_core() {
         cp "$TARGET_DIR/bitcoin/src/bitcoind" "$TARGET_DIR/bin/" &&
             cp "$TARGET_DIR/bitcoin/src/bitcoin-cli" "$TARGET_DIR/bin/" &&
             print_success "Bitcoin Core v$VERSION (compiled) installed successfully!"
-    elif [ -f "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoind" ]; then
+    elif [ -f "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoind" ]; then
         # Install downloaded binaries.
-        cp "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoind" "$TARGET_DIR/bin/" &&
-            cp "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoin-cli" "$TARGET_DIR/bin/" &&
-                rm -rf "$TARGET_DIR/bitcoin-$VERSION"
+        cp "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoind" "$TARGET_DIR/bin/" &&
+            cp "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoin-cli" "$TARGET_DIR/bin/" &&
+                rm -rf "$TARGET_DIR/bitcoin-$VERSION_DIR"
             print_success "Bitcoin Core v$VERSION (binaries) installed successfully!"
     else
         print_error "Cannot find files to install."
