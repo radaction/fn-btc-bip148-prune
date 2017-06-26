@@ -49,7 +49,7 @@
 REPO_URL="https://github.com/UASF/bitcoin.git"
 
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
-VERSION=v0.14.2-uasfsegwit0.3
+VERSION=0.14.2-uasfsegwit0.3
 
 TARGET_DIR=$HOME/bitcoin-core
 PORT=8333
@@ -383,7 +383,7 @@ build_bitcoin_core() {
 }
 
 get_bin_url() {
-    url="https://bitcoin.org/bin/bitcoin-core-$VERSION"
+    url="https://uasf.bitcoinreminder.com/core-$VERSION"
     case "$SYSTEM" in
         Linux)
             if program_exists "apk"; then
@@ -410,7 +410,7 @@ get_bin_url() {
 }
 
 download_bin() {
-    checksum_url="https://bitcoin.org/bin/bitcoin-core-$VERSION/SHA256SUMS.asc"
+    checksum_url="https://uasf.bitcoinreminder.com/core-$VERSION/SHA256SUMS.asc"
     signing_key_url="https://bitcoin.org/laanwj-releases.asc"
 
     cd $TARGET_DIR
