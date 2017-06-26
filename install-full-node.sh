@@ -26,21 +26,21 @@
 # If the binaries for your system are not available, the installer will attempt
 # to build and install Bitcoin Core from source.
 #
-# All files will be installed into $HOME/bitcoin-core directory. Layout of this
+# All files will be installed into $HOME/bitcoin-$VERSION directory. Layout of this
 # directory after the installation is shown below:
 #
 # Source files:
-#   $HOME/bitcoin-core/bitcoin/
+#   $HOME/bitcoin-$VERSION/bitcoin/
 #
 # Binaries:
-#   $HOME/bitcoin-core/bin/
+#   $HOME/bitcoin-$VERSION/bin/
 #
 # Configuration file:
-#   $HOME/bitcoin-core/.bitcoin/bitcoin.conf
+#   $HOME/bitcoin-$VERSION/.bitcoin/bitcoin.conf
 #
 # Blockchain data files:
-#   $HOME/bitcoin-core/.bitcoin/blocks
-#   $HOME/bitcoin-core/.bitcoin/chainstate
+#   $HOME/bitcoin-$VERSION/.bitcoin/blocks
+#   $HOME/bitcoin-$VERSION/.bitcoin/chainstate
 #
 #                     Need help? Contact ayeowch@gmail.com
 #
@@ -51,7 +51,7 @@ REPO_URL="https://github.com/UASF/bitcoin.git"
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
 VERSION=0.14.2-uasfsegwit0.3
 
-TARGET_DIR=$HOME/bitcoin-core
+TARGET_DIR=$HOME/bitcoin-$VERSION
 PORT=8333
 
 BUILD=0
