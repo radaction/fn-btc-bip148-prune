@@ -26,21 +26,21 @@
 # If the binaries for your system are not available, the installer will attempt
 # to build and install Bitcoin Core from source.
 #
-# All files will be installed into $HOME/bitcoin-$VERSION directory. Layout of this
+# All files will be installed into $HOME/bitcoin-core directory. Layout of this
 # directory after the installation is shown below:
 #
 # Source files:
-#   $HOME/bitcoin-$VERSION/bitcoin/
+#   $HOME/bitcoin-core/bitcoin/
 #
 # Binaries:
-#   $HOME/bitcoin-$VERSION/bin/
+#   $HOME/bitcoin-core/bin/
 #
 # Configuration file:
-#   $HOME/bitcoin-$VERSION/.bitcoin/bitcoin.conf
+#   $HOME/bitcoin-core/.bitcoin/bitcoin.conf
 #
 # Blockchain data files:
-#   $HOME/bitcoin-$VERSION/.bitcoin/blocks
-#   $HOME/bitcoin-$VERSION/.bitcoin/chainstate
+#   $HOME/bitcoin-core/.bitcoin/blocks
+#   $HOME/bitcoin-core/.bitcoin/chainstate
 #
 #                     Need help? Contact ayeowch@gmail.com
 #
@@ -50,8 +50,9 @@ REPO_URL="https://github.com/UASF/bitcoin.git"
 
 # See https://github.com/bitcoin/bitcoin/tags for latest version.
 VERSION=0.14.2-uasfsegwit0.3
+VERSION_DIR=0.14.2
 
-TARGET_DIR=$HOME/bitcoin-$VERSION
+TARGET_DIR=$HOME/bitcoin-core
 PORT=8333
 
 BUILD=0
@@ -486,11 +487,11 @@ install_bitcoin_core() {
         cp "$TARGET_DIR/bitcoin/src/bitcoind" "$TARGET_DIR/bin/" &&
             cp "$TARGET_DIR/bitcoin/src/bitcoin-cli" "$TARGET_DIR/bin/" &&
             print_success "Bitcoin Core v$VERSION (compiled) installed successfully!"
-    elif [ -f "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoind" ]; then
+    elif [ -f "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoind" ]; then
         # Install downloaded binaries.
-        cp "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoind" "$TARGET_DIR/bin/" &&
-            cp "$TARGET_DIR/bitcoin-$VERSION/bin/bitcoin-cli" "$TARGET_DIR/bin/" &&
-                rm -rf "$TARGET_DIR/bitcoin-$VERSION"
+        cp "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoind" "$TARGET_DIR/bin/" &&
+            cp "$TARGET_DIR/bitcoin-$VERSION_DIR/bin/bitcoin-cli" "$TARGET_DIR/bin/" &&
+                rm -rf "$TARGET_DIR/bitcoin-$VERSION_DIR"
             print_success "Bitcoin Core v$VERSION (binaries) installed successfully!"
     else
         print_error "Cannot find files to install."
