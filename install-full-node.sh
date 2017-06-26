@@ -411,7 +411,7 @@ get_bin_url() {
 
 download_bin() {
     checksum_url="https://uasf.bitcoinreminder.com/core-$VERSION/SHA256SUMS.asc"
-    signing_key_url="https://bitcoin.org/laanwj-releases.asc"
+    signing_key_url="https://raw.githubusercontent.com/UASF/bitcoin/master/contrib/gitian-keys/luke-jr-key.pgp"
 
     cd $TARGET_DIR
 
